@@ -94,3 +94,4 @@ C:\Users\dillo\WebApp\obj\Debug\net9.0\refint\WebApp.dll
 C:\Users\dillo\WebApp\obj\Debug\net9.0\WebApp.pdb
 C:\Users\dillo\WebApp\obj\Debug\net9.0\WebApp.genruntimeconfig.cache
 C:\Users\dillo\WebApp\obj\Debug\net9.0\ref\WebApp.dll
+C:\Users\dillo\WebApp\obj\Debug\net9.0\WebApp.sourcelink.json
