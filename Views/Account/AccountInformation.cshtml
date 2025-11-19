@@ -1,0 +1,56 @@
+@model WebApp.Models.StudentAccountViewModel
+
+@{
+    ViewData["Title"] = "Account Information";
+}
+
+<h1>Account Information</h1>
+
+<p>Enter your name and student ID to view your account details.</p>
+
+<form asp-action="AccountInformation" asp-controller="Account" method="post">
+    @Html.AntiForgeryToken()
+
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="StudentId" class="form-label"></label>
+        <input asp-for="StudentId" class="form-control" />
+        <span asp-validation-for="StudentId" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Lookup Account</button>
+</form>
+
+<hr />
+
+@if (!string.IsNullOrEmpty(Model?.ErrorMessage))
+{
+    <div class="alert alert-danger mt-3">
+        @Model.ErrorMessage
+    </div>
+}
+
+@if (Model != null && Model.HasResult)
+{
+    <div class="card mt-3">
+        <div class="card-header">
+            Account Details for @Model.Name (@Model.StudentId)
+        </div>
+        <div class="card-body">
+            <p><strong>Major:</strong> @Model.Major</p>
+            <p><strong>Year:</strong> @Model.Year</p>
+            <p><strong>Address:</strong> @Model.Address</p>
+            <p><strong>Emergency Contact:</strong> @Model.EmergencyContactName</p>
+            <p><strong>Emergency Phone:</strong> @Model.EmergencyContactPhone</p>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
